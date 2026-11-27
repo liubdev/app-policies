@@ -1,52 +1,70 @@
-# App Policies
+# Policy Pages · 静态协议页面编辑器
 
-用 GitHub Pages 发布应用隐私政策、用户协议和支持页面。项目提供一个静态目录和浏览器编辑器，不需要后端。GitHub Pages 会提供 `https://<账号>.github.io/<仓库>/` 地址；自定义域名可选。
+使用浏览器编写隐私政策、用户协议或技术支持页面，实时预览、导出独立 HTML，并通过 GitHub Pages 免费发布。无需购买域名、服务器或安装构建工具。
 
-可以向本仓库提交政策页面，也可以 Fork 后只维护自己的文件。**提交到公共仓库的页面会公开访问**，不要加入密钥、用户数据或未经授权的内容。
+[打开编辑器](https://liubdev.github.io/app-policies/editor.html) · [查看发布指南](docs/hosting-guide.md) · [Demo 页面](https://liubdev.github.io/app-policies/Demo-privacy.zh-Hans.html)
 
-## 在浏览器中编辑
+## 功能
 
-打开 [`editor.html`](editor.html) 即可填写产品信息、编辑章节并查看实时预览。草稿只保存在当前浏览器，不会上传；点击“下载网页”得到独立 HTML 文件。需要在另一台设备继续编辑时，可导出并导入 JSON 配置。
+- 私密草稿：编辑内容保存在当前浏览器，不会上传到服务器。
+- 独立导出：下载不依赖本项目的 HTML 文件，可放进任意 GitHub 仓库。
+- 简单目录：自动扫描根目录中的 `<产品>-<类型>.<语言>.html` 页面。
+- 可定制外观：调整标题、强调色、正文宽度和页脚。
+- 配置备份：支持 JSON 配置的导入和导出。
+- 零构建部署：纯 HTML、CSS 和 JavaScript，可直接托管到 GitHub Pages。
 
-## 发布自己的页面
+## 快速开始
 
-1. Fork 本仓库，在你的 Fork 中添加政策 HTML 文件。建议按 `产品名-类型.语言.html` 命名，例如 `MyApp-privacy.zh-Hans.html`。支持类型：`privacy`、`user-agreement`、`support`。
-2. 页面内容应准确反映你的应用行为。不要直接照搬示例政策；按实际数据处理情况修改，并自行确认适用的法律要求。
-3. 在仓库 **Settings → Pages** 中将 **Build and deployment** 设置为 **Deploy from a branch**，选择 `main` 分支和 `/(root)` 目录并保存。
-4. 等待 Pages 发布，在仓库 **Settings → Pages** 查看站点地址。提交到应用商店的链接格式为 `https://<账号>.github.io/<仓库>/<文件名>`。
+1. Fork 或使用本仓库作为模板。
+2. 打开仓库地址上的 `editor.html`，例如 `https://<用户名>.github.io/<仓库>/editor.html`。
+3. 选择页面类型和语言，填写实际产品、数据处理方式和联系渠道。
+4. 点击“下载网页”，将生成的 HTML 提交到自己的仓库。
+5. 在仓库的 **Settings → Pages** 中启用 Pages。开发者无需购买域名；仓库会获得免费的 `github.io` 地址。
 
-详细说明见[托管指南](docs/hosting-guide.md)。GitHub Pages 是静态托管服务；公共仓库中的文件和页面可被公开访问。若你只需自己的页面，Fork 后只保留自己的页面即可。
+每次修改政策后，请更新生效或更新日期，并在应用商店中核对公开链接仍可访问。
 
-## 本地预览与目录生成
+## 目录
 
-直接在浏览器打开 `index.html` 可查看目录；每份政策页面也可单独打开。修改或添加根目录政策文件后，运行：
+<!-- POLICY-LIST:START -->
+- **Demo**：隐私政策： [简体中文](Demo-privacy.zh-Hans.html) ｜ 用户协议： 暂无 ｜ 技术支持： 暂无
+<!-- POLICY-LIST:END -->
+
+由 `node generate_readme.mjs` 执行目录更新：
 
 ```bash
 node generate_readme.mjs
-```
-
-这会更新 `index.html` 和 README 中的页面列表。检查生成文件是否最新：
-
-```bash
 node generate_readme.mjs --check
 ```
 
-该项目不需要依赖安装、构建工具或后端。GitHub Actions 会在 Pull Request 和主分支更新时检查目录是否已同步。
+目录扫描规则：根目录中的 `<产品>-privacy.<语言>.html`、`<产品>-user-agreement.<语言>.html` 和 `<产品>-support.<语言>.html`。
 
-## 页面索引
+## 本地使用
 
-<!-- POLICY-LIST:START -->
-- **Demo**：隐私政策：[简体中文](Demo-privacy.zh-Hans.html) ｜ 用户协议：暂无 ｜ 技术支持：暂无
-<!-- POLICY-LIST:END -->
+```text
+index.html             发布目录
+editor.html            可视化编辑器
+styles.css             编辑器及目录样式
+app.js                 草稿、预览、导入导出与 HTML 生成
+Demo-privacy.zh-Hans.html  虚构演示页面
+generate_readme.mjs    更新目录和 README 列表
+```
+
+直接打开 `editor.html` 即可使用。需要通过浏览器在文件地址中使用时，导入/导出和部分浏览器能力可能受限；若需完整体验，可运行任意本地静态服务器：
+
+```bash
+python3 -m http.server 4173
+```
+
+然后访问 `http://localhost:4173/editor.html`。
+
+## 重要说明
+
+本项目提供页面排版和发布框架，不提供法律意见，也不保证任何地区的合规性。示例内容和骨架只用于编辑，发布前必须根据真实产品、SDK、数据流、运营主体和适用法律逐项核对。
 
 ## 贡献
 
-欢迎提交新语言、修正和易于复用的页面。请先阅读[贡献指南](CONTRIBUTING.md)，并确保内容没有误导用户或声称本项目提供法律审核。
+欢迎提交页面、翻译、修复和无依赖的界面改进。请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。不要提交真实用户数据、密钥、未授权法律文本或无权公开的内容。
 
-## 免责声明
+## 许可证
 
-本项目仅提供静态页面托管样例与目录，不提供法律意见，也不保证页面满足任何应用商店、地区或司法辖区的要求。发布者需自行核对政策内容并对其准确性负责。
-
-## License
-
-MIT，详见 [LICENSE](LICENSE)。
+[MIT License](LICENSE)。

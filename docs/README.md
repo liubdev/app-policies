@@ -1,4 +1,9 @@
-# 文档
+# Documentation
 
-- [托管指南](hosting-guide.md)：Fork 项目并使用 GitHub Pages 发布个人政策页面。
-- [贡献指南](../CONTRIBUTING.md)：目录结构、文件命名和 Pull Request 检查要求。
+This directory contains additional guides for the Policy Pages project.
+
+- [GitHub Pages hosting guide](hosting-guide.md)
+- [Editor usage](../README.md)
+- [Contribution guidelines](../CONTRIBUTING.md)
+
+The repository provides a static policy-page editor and export workflow. It does not store drafts on a server or provide legal review.
