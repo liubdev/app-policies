@@ -1,1 +1,7 @@
-﻿index.html
+# Python
+__pycache__/
+*.py[cod]
+
+# Local editor / operating system files
+.DS_Store
+Thumbs.db

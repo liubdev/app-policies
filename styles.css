@@ -3,3 +3,22 @@
 @media(max-width:900px){.workspace{grid-template-columns:1fr}.preview-column{position:static}.preview-frame{min-height:470px}.intro{align-items:flex-start;flex-direction:column}.help-link{margin-top:-18px}}
 @media(max-width:600px){.topbar{height:auto;min-height:64px;padding:12px 14px;align-items:flex-start;gap:12px;flex-direction:column}.top-actions{width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}.button{padding:9px 5px;font-size:10px}.layout{padding:31px 14px 18px}.intro{margin-bottom:22px}.intro h1{font-size:31px}.intro-copy{font-size:12px}.panel{padding:16px}.panel-heading{align-items:flex-start}.local-badge{font-size:9px}.form-grid{gap:11px 8px}.field{font-size:10px}.field input,.field select{font-size:11px}.preview-frame{padding:10px;min-height:440px}.document-preview{padding:28px 20px;min-height:410px}.site-footer{gap:10px;flex-direction:column}.section-heading h3{font-size:13px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+/* Keep secondary text readable without changing the existing editor palette. */
+.brand small,.intro-copy,.local-badge,.privacy-note,.field-hint,.section-number,.icon-button,.color-control,.preview-label,.document-preview .doc-meta,.document-preview .doc-intro,.document-preview .doc-body,.document-preview .doc-contact,.doc-footer,.publish-card p,.legal-note,.site-footer,.empty-sections{color:#58647a}
+.field input::placeholder,.section-card input::placeholder,.section-card textarea::placeholder{color:#657087;opacity:1}
+.status-message{color:#286a55}
+.button-small{color:#3549b7}
+.button{font-family:inherit;font-size:12px;font-weight:600}
+.field input,.field select,.section-card input,.section-card textarea{font-family:inherit}
+.icon-button:disabled{opacity:1!important;color:#667187;cursor:not-allowed}
+@media(max-width:600px){.top-actions{grid-template-columns:repeat(2,minmax(0,1fr))}.button{min-height:42px;font-size:12px}.field{font-size:12px}.field input,.field select,.section-card input,.section-card textarea{font-size:16px}}
+.intro-copy,.privacy-note,.field-hint,.field,.design-settings summary,.publish-card p,.legal-note{font-size:14px;line-height:1.65}
+.document-preview .doc-meta,.document-preview .doc-intro,.document-preview .doc-body,.document-preview .doc-contact{font-size:14px}
+.brand small,.eyebrow,.local-badge,.section-number,.preview-label,.doc-footer,.site-footer,.status-message{color:#58647a}
+.help-link{color:#3549b7}
+.brand small,.eyebrow,.preview-label,.site-footer,.site-footer a{font-size:11px}
+.site-footer a{color:#3549b7}
+.color-control{padding:6px 9px}
+.color-control{padding-block:6px}
+@media(max-width:600px){.intro-copy,.privacy-note,.field-hint,.field,.design-settings summary,.publish-card p,.legal-note{font-size:14px}.local-badge{font-size:12px}}
