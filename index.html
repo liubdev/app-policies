@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f7fb">
+  <meta name="description" content="A simple, open-source editor for privacy policies and app documents. Export standalone pages and host them on GitHub Pages for free.">
+  <title>Policy Pages — 简单的协议页面制作器</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Policy Pages home"><span class="brand-mark">P</span><span>Policy Pages<small>简单、清晰、可自托管</small></span></a>
+    <nav class="top-actions" aria-label="工具">
+      <button class="button button-quiet" id="save-button" type="button">保存草稿</button>
+      <button class="button button-quiet" id="export-config" type="button">导出配置</button>
+      <button class="button button-quiet" id="import-config-button" type="button">导入配置</button>
+      <input id="import-config" type="file" accept="application/json,.json" hidden>
+      <button class="button button-primary" id="download-html" type="button">下载网页</button>
+    </nav>
+  </header>
+
+  <main id="top" class="layout">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">FREE · OPEN SOURCE · NO DOMAIN REQUIRED</p>
+        <h1>把协议页面，<span>做得简单一点。</span></h1>
+        <p class="intro-copy">填写内容，调整样式，实时预览，然后下载独立 HTML。把文件放进 GitHub 仓库并启用 GitHub Pages，就能用免费的 <code>github.io</code> 地址发布。</p>
+      </div>
+      <a class="help-link" href="README.md">部署与使用说明 <span aria-hidden="true">↗</span></a>
+    </section>
+
+    <div class="workspace">
+      <section class="editor panel" aria-labelledby="editor-heading">
+        <div class="panel-heading">
+          <div><p class="eyebrow">YOUR DOCUMENT</p><h2 id="editor-heading">页面设置</h2></div>
+          <span class="local-badge"><span></span>仅保存在本机</span>
+        </div>
+        <p class="privacy-note">这里的编辑内容不会上传到服务器。请记得导出网页并提交到自己的仓库，才能公开发布。</p>
+
+        <div class="form-grid">
+          <label class="field field-wide">应用或产品名称<input id="product-name" type="text" maxlength="100" placeholder="例如：星河日记"></label>
+          <label class="field">文档类型<select id="document-type"><option value="privacy">隐私政策</option><option value="terms">用户协议</option><option value="support">技术支持</option><option value="custom">自定义页面</option></select></label>
+          <label class="field">页面语言<select id="document-language"><option value="zh-Hans">简体中文</option><option value="zh-Hant">繁體中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="fr">Français</option><option value="de">Deutsch</option></select></label>
+          <label class="field field-wide">页面标题<input id="document-title" type="text" maxlength="140" placeholder="例如：星河日记隐私政策"></label>
+          <label class="field">生效或更新日期<input id="updated-date" type="date"></label>
+          <label class="field">联系邮箱<input id="contact-email" type="email" maxlength="200" placeholder="hello@example.com"></label>
+        </div>
+
+        <div class="section-heading"><div><p class="eyebrow">CONTENT</p><h3>正文内容</h3></div><button class="button button-small" id="add-section" type="button">＋ 添加章节</button></div>
+        <p class="field-hint">每个章节填写一个标题和正文。正文支持纯文本换行，预览和导出时会安全转义。</p>
+        <div id="sections" class="sections" aria-live="polite"></div>
+
+        <details class="design-settings">
+          <summary>外观设置</summary>
+          <div class="form-grid design-grid">
+            <label class="field">强调色<div class="color-control"><input id="accent-color" type="color" value="#5367f5"><span id="accent-value">#5367F5</span></div></label>
+            <label class="field">内容宽度<select id="content-width"><option value="narrow">窄版</option><option value="standard" selected>标准</option><option value="wide">宽版</option></select></label>
+            <label class="field field-wide">页脚文字<input id="footer-text" type="text" maxlength="160" placeholder="例如：© 2026 星河日记"></label>
+          </div>
+        </details>
+        <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="preview-column" aria-labelledby="preview-heading">
+        <div class="preview-toolbar"><div><p class="eyebrow">LIVE PREVIEW</p><h2 id="preview-heading">页面预览</h2></div><span class="preview-label">预览效果</span></div>
+        <div class="preview-frame">
+          <article id="preview" class="document-preview width-standard" aria-label="文档预览"></article>
+        </div>
+        <aside class="publish-card"><span class="publish-icon" aria-hidden="true">↗</span><div><strong>下一步：免费发布</strong><p>下载 HTML 文件 → 添加到你的 GitHub 仓库 → 在 Settings → Pages 中启用发布。无需购买域名。</p></div></aside>
+        <p class="legal-note"><strong>重要：</strong>本工具只提供页面排版，不提供法律意见。示例文字不一定适用于你的产品或地区；发布前请按实际数据处理方式修改，并在需要时咨询专业人士。</p>
+      </section>
+    </div>
+    <footer class="site-footer">Policy Pages · 开源、静态、无需后端。<a href="https://github.com/liubdev/app-policies">查看 GitHub 仓库</a></footer>
+  </main>
+  <script src="app.js" defer></script>
+</body>
+</html>
